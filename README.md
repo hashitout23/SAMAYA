@@ -1,0 +1,2 @@
+# SAMAYA
+The One Solution
