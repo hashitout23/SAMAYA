@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
-import { RxDotFilled } from 'react-icons/rx';
 
 function Hero() {
   const slides = [
@@ -37,7 +36,7 @@ function Hero() {
   };
 
   return (
-    <div className='max-w-[1500px] h-[380px] w-full m-auto py-2 relative group drop-shadow-2xl'>
+    <div className='max-w-[1500px] h-[380px] m-auto py-2 relative group '>
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className='w-full h-full rounded-2xl bg-center bg-cover duration-500'

@@ -1,22 +1,37 @@
-import React from "react";
+import Slider from 'react-infinite-logo-slider'
 
 const Features = () => {
-  return (
+    
+    return (
     <div>
-    <button
-    className="fixed bottom-4 right-4 inline-flex items-center justify-center text-sm font-medium pointer-events-auto disabled:opacity-50 border rounded-full w-16 h-16"
-    type="button" aria-haspopup="dialog" aria-expanded="false" data-state="closed">
-    <svg xmlns=" http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      className="text-black block border-black align-middle">
-      <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z" className="border-black">
-      </path>
-    </svg>
-  </button>
+        <div>
+            <h1 className='font-bold text-2xl mx-40 my-10 absolute'>Emergency Contact</h1>
+            <h1 className='font-bold text-2xl mx-60 my-20 absolute'>Section</h1>
+        </div>
 
-</div>
-  
-  );
-};
-
-export default Features;
+        <div className='wrapper my-12 ml-2 mr-2 pl-96 pr-60 drop-shadow-2xl'>
+        <Slider
+            width="250px"
+            duration={40}
+            blurBorders={false}
+            pauseOnHover={true}
+        >
+            <Slider.Slide>
+                <img src="src\assets\cup.jpg" alt="#" className='w-56 rounded-2xl cursor-pointer' />
+            </Slider.Slide>
+            <Slider.Slide>
+                <img src="src\assets\cup1.jpg" alt="#" className='w-56 rounded-2xl cursor-pointer' />
+            </Slider.Slide>
+            <Slider.Slide>
+                <img src="src\assets\cup2.jpg" alt="#" className='w-56 rounded-2xl cursor-pointer' />
+            </Slider.Slide>
+            <Slider.Slide>
+                <img src="src\assets\cup3.jpg" alt="#" className='w-56 rounded-2xl cursor-pointer' />
+            </Slider.Slide>
+        </Slider>
+        </div>
+    </div>
+    )
+}              
+                     
+export default Features
