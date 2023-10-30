@@ -1,0 +1,69 @@
+.works1{
+    background-color: #F7F6FA;
+}
+.footer{
+    background-color: #0000B0;
+    height: 20vh
+}
+.works{
+    display: flex;
+}
+.works h1{
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgb(169, 169, 169);
+    padding: 4rem 1rem;
+
+    /* background-co2or: red; */
+}
+.circle1{
+    height: 7.5rem;
+    background-color: white;
+    width: 7.5rem;
+    border-radius: 50%;
+    padding: 1rem 0 ;
+    margin: 2rem;
+}
+.circle2{
+    height: 7.5rem;
+    background-color:white;
+    width: 7.5rem;
+    border-radius: 50%;
+    padding: 1rem 0;
+    margin: 2rem;
+}
+.circle3{
+    height: 7.5rem;
+    background-color:white;
+    width: 7.5rem;
+    border-radius: 50%;
+    padding: 1rem 0;margin: 2rem;
+}
+.circle4{
+    height: 7.5rem;
+    background-color: white;
+    width: 7.5rem;
+    border-radius: 50%;
+    padding: 1rem 0;
+    margin: 2rem;
+    
+}
+.works{
+    display: flex;
+    flex-wrap: wrap;
+}
+.arrow1{
+    margin-top:5rem;
+    margin-left: -0.9rem;
+    margin-right: -1rem;
+}
+.arrow2{
+    margin-top:5rem;
+    margin-left: -0.9rem;
+    margin-right: -1rem;
+}
+.arrow3{
+    margin-top:5rem;
+    margin-left: -0.9rem;
+    margin-right: -1rem;
+}
