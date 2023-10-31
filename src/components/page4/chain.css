@@ -67,3 +67,23 @@
     margin-left: -0.9rem;
     margin-right: -1rem;
 }
+.button{
+    height:1.7rem;
+    width:10rem;
+    display: flex;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    justify-content: center;
+
+}
+.search{
+   padding: .2rem .5rem; 
+   margin-top: 0.11rem;
+}
+.right{
+    padding: 1rem;
+    /* background-color: red; */
+    display: grid;
+    justify-content: end;
+}

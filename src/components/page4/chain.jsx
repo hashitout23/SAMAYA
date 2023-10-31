@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
+import { FaSearch } from "react-icons/fa";
 import'./chain.css'
 
 const chain = () => {
@@ -18,7 +19,16 @@ const chain = () => {
             <div className='arrow3'><FaArrowRight /></div>
             <div className='circle4'></div>
         </div>
-        <div className='footer'></div>
+        <div className='footer'>
+            <div className='right'>
+            <button>
+            <div className='button'>
+                <div className='search'><FaSearch /></div>
+                search
+            </div>
+            </button>
+            </div>
+        </div>
       </div>
     </div>
   )
