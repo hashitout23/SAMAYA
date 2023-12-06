@@ -87,3 +87,19 @@
     display: grid;
     justify-content: end;
 }
+.circle1 img{
+    padding: 1rem;
+    margin-top: -1.4rem;
+}
+.circle2 h1{
+    font-size: 1.3rem;
+    margin-top: -3.2rem;
+    margin-left: -0.5rem;
+}
+.circle3 img{
+    padding:0.5rem;
+    margin-top: -1.5rem;
+}
+.circle4 img{
+    margin-top: -1rem;
+}

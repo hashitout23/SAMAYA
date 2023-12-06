@@ -4,7 +4,7 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 function Hero() {
   const slides = [
     {
-      url: 'https://images.unsplash.com/photo-1589828994379-7a8869c4f519?auto=format&fit=crop&q=80&w=1824&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      url: 'https://www.digilocker.gov.in/assets/img/quiz_banner_mob.jpg',
     },
     {
       url: 'https://media.istockphoto.com/id/1679484568/vector/sad-woman-sitting-alone-in-a-paper-boat-depression-concept-illustration.jpg?s=2048x2048&w=is&k=20&c=8an70rp495nTHMA3PDtJ_0iKn2Ay9COS1Pp99HYcIRw=',
@@ -17,7 +17,7 @@ function Hero() {
       url: 'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2253&q=80',
     },
     {
-      url: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80',
+      url: 'https://wallpapercave.com/wp/wp10299394.png',
     },
   ];
 

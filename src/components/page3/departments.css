@@ -38,4 +38,7 @@
 .departments_1 button img{
 padding: 20px;
 }
-
+.departments_1:nth-child(){
+    /* padding :20px; */
+    background-color: red;
+}
