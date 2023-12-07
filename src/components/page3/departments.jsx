@@ -18,7 +18,7 @@ const departments = () => {
             <button><img src="src\assets\family.png" alt="" />Insurance</button>
             <button><img src="src\assets\ecommerce.png" alt="" />E-commerce</button>
             <button><img src="src\assets\water.png" alt="" />Water</button>
-            <button><img src="src\assets\others.png" alt=""/>Others</button>
+            <button><img src="src\assets\others.png" alt="" />Others</button>
         </div>            
     </div>
   )

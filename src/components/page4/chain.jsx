@@ -11,13 +11,15 @@ const chain = () => {
             <h1>
                 THIS IS HOW SAMAYA WORKS
             </h1>
-            <div className='circle1'></div>
+            <div className='circle1'>
+              <img src="src\assets\Frame 8.png" alt="" />
+            </div>
             <div className='arrow1'><FaArrowRight /></div>
-            <div className='circle2'></div>
+            <div className='circle2'><h1>User Grievance</h1></div>
             <div className='arrow2'><FaArrowRight /></div>
-            <div className='circle3'></div>
+            <div className='circle3'><img src="src\assets\transformers.png" alt="" /></div>
             <div className='arrow3'><FaArrowRight /></div>
-            <div className='circle4'></div>
+            <div className='circle4'><img src="src\assets\tu.png" alt="" /></div>
         </div>
         <div className='footer'>
             <div className='right'>
