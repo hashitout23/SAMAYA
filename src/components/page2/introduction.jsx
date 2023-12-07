@@ -10,7 +10,7 @@ const introduction = () => {
       <div className='flex'>
         <div className='text'>
             <h1>Time saving Grievance Registration</h1>
-            <p>SAMAYA'S GOAL IS TO ASSIT YOU WITH ANY PROBLEMS YOU HAVE IN THE EASE OF LODGING A COMPLAINTS OR GRIEVANCE BY CITIZENS TO THE GOVERNMENT BODIES </p>
+            <p><span>SAMAYA'S</span> GOAL IS TO ASSIT YOU WITH ANY PROBLEMS YOU HAVE IN THE EASE OF LODGING A COMPLAINTS OR GRIEVANCE BY CITIZENS TO THE GOVERNMENT BODIES </p>
         </div>
         <div className='box'>
           <img src="src\assets\Frame 8.png" alt="" />

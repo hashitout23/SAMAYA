@@ -8,6 +8,9 @@
 .works{
     display: flex;
 }
+.works span{
+    color: #523EC4;
+}
 .works h1{
     font-size: 2rem;
     font-weight: 800;
