@@ -11,6 +11,10 @@
     font-size: 30px;
     font-weight: 700;
 }
+.text span{
+    color: #523EC4;
+    font-weight: 700;
+}
 .text p{
 color:rgb(169, 169, 169);
 }

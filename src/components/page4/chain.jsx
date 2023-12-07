@@ -9,7 +9,7 @@ const chain = () => {
       <div className='works1'>
         <div className='works'>
             <h1>
-                THIS IS HOW SAMAYA WORKS
+                THIS IS HOW <span>SAMAYA</span> WORKS
             </h1>
             <div className='circle1'>
               <img src="src\assets\Frame 8.png" alt="" />
