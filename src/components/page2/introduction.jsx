@@ -20,7 +20,7 @@ const introduction = () => {
       
       <Popup trigger={<button className='popup'> <h4>Chatbot SAMAYA</h4> </button>} position="right center">
         <div>PLEASE TELL US YOUR GRIEVANCE </div>
-        <button> <a href="https://masterzer0456-ai1.hf.space">Click here</a></button>
+        <button className='click'> <a href="https://masterzer0456-ai1.hf.space">CLICK HERE</a></button>
       </Popup>
     </div>
     </div>

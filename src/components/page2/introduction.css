@@ -34,11 +34,15 @@ color:rgb(169, 169, 169);
     margin-top: -5.4rem;
 }
 .popup{
-    background-color: blue;
+    background-color: #523EC4;
     color: white;
     padding: 1rem;
     border-radius: 15px;
     margin-top: -40px;
     margin-left: 90px;
     margin-bottom: 20px;
+}
+.click{
+    color:rgb(100, 35, 160);
+    font-weight: 900;
 }

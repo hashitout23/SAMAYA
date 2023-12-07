@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from "react"
+import { useAuth0 } from "@auth0/auth0-react";
 
 // Profile Dropdown
 const ProfileDropDown = (props) => {
-
+    const { user, isAuthenticated, isLoading } = useAuth0();
     const [state, setState] = useState(false)
     const profileRef = useRef()
 
@@ -23,24 +24,21 @@ const ProfileDropDown = (props) => {
     return (
         <div className={`relative ${props.class}`}>
             <div className="flex items-center space-x-4">
-                <button ref={profileRef} className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-blue-600"
+                <button ref={profileRef} className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-purple-800"
                     onClick={() => setState(!state)}
                 >
-                    <img
-                        src="src\assets\user icon.png"
-                        className="w-full h-full rounded-full"
-                    />
+                    {isAuthenticated&&<img src={user.picture} alt={user.name} className="w-full h-full rounded-full"/>}
                 </button>
                 <div className="lg:hidden">
-                    <span className="block">John Cena</span>
-                    <span className="block text-sm text-gray-500">john@gmail.com</span>
+                    <span className="block text-gray-500 font-black">{isAuthenticated &&<p>{user.name}</p>}</span>
+                    <span className="block text-sm text-purple-800">{isAuthenticated &&<p>{user.email}</p>}</span>
                 </div>
             </div>
             <ul className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${state ? '' : 'lg:hidden'}`}>
                 {
                     navigation.map((item, idx) => (
                         <li>
-                            <a key={idx} className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5" href={item.path}>
+                            <a key={idx} className="block text-purple-800 lg:hover:bg-gray-50 lg:p-2.5" href={item.path}>
                                 {item.title}
                             </a>
                         </li>
@@ -52,7 +50,9 @@ const ProfileDropDown = (props) => {
 }
 
 export default () => {
-
+    const { loginWithRedirect } = useAuth0();
+    const { logout } = useAuth0();
+    const { user, isAuthenticated, isLoading } = useAuth0();
     const [menuState, setMenuState] = useState(false)
 
   // Replace javascript:void(0) path with your path
@@ -68,37 +68,48 @@ export default () => {
                 <div className="flex-none lg:flex-initial">
                     <a href="javascript:void(0)">
                         <img
-                            src="src\assets\samaya.png"                //samaya logo
-                            width={100} 
-                            height={50}
+                            src="src\assets\Frame 8.png"               //samaya logo
+                            width={65} 
+                            height={100}
                             alt="Samaya logo"
                         />
                     </a>
                 </div>
+
+                
                 <div className="flex-1 flex items-center justify-between font-bold text-xl ">
-                    <div className={`bg-white absolute z-20 w-full top-16 left-0 p-4 border-b lg:static lg:block lg:border-none ${menuState ? '' : 'hidden'}`}>
-                        <ul className="mt-12 space-y-5 lg:flex lg:space-x-6 lg:space-y-0 lg:mt-0">
+                    
+                    {/* for home and other stuffs in navbar */}
+                    
+                    <div className={`bg-white  absolute z-20 w-full top-16 left-0 p-4 border-b lg:static lg:block lg:border-none ${menuState ? '' : 'hidden'}`}>
+                        <ul className="mt-12 space-y-5 lg:flex lg:space-x-6 lg:space-y-0 lg:mt-0 mr-4">
+                        
                             {
                                 navigation.map((item, idx) => (
-                                    <li key={idx} className="text-black hover:text-blue-600 ">
+                                    <li key={idx} className=" hover:text-purple-800 text-gray-500 font-black">
                                         <a href={item.path}>
                                             {item.title}
                                         </a>
                                     </li>
                                 ))
                             }
+                            {isAuthenticated ?(<button className=" text-gray-500 font-black border-4 rounded-lg p-1  border-purple-700 text-xs" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}> Log Out</button>)
+                            :(<button className="  text-gray-500 font-black border-4 rounded-lg p-1  border-purple-700 text-xs" onClick={() => loginWithRedirect()}>Log In</button>)}
+                            
+                            
                         </ul>
                         <ProfileDropDown 
                             class="mt-5 pt-5 border-t lg:hidden"
                         />
                     </div>
+                    {/* for search bar and the profile */}
                     <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
                         <form className="flex items-center space-x-2 border rounded-md p-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-none text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-none text-purple-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                             <input
-                                className="w-full outline-none appearance-none placeholder-grey-600 text-black sm:w-auto"
+                                className="w-full outline-none appearance-none placeholder-grey-600 text-gray-500 sm:w-auto"
                                 type="text"
                                 placeholder="Search"
                             />
@@ -107,7 +118,7 @@ export default () => {
                             class="hidden lg:block"
                         />
                         <button 
-                            className="outline-none text-blue-600 block lg:hidden"
+                            className="outline-none text-purple-800 block lg:hidden"
                             onClick={() => setMenuState(!menuState)}
                         >
                             {
