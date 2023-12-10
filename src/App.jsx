@@ -7,7 +7,7 @@ import Departments from'./components/page3/departments';
 import Chain from'./components/page4/chain';
 function App() {
   return (
-    <div className='scroll-smooth'>
+    <div className=''> 
     <div>
       <Navbar/>
       <Hero/>
