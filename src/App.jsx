@@ -8,7 +8,7 @@ import Chain from'./components/page4/chain';
 import Admin from './components/admin/admindash';
 import Foot from './components/page4/footer';
 import Userdash from './components/userd/userdash';
-
+import Chatbot from'./components/page1/chatbot';
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
     <div>
       <Navbar/>
       <Hero/>
+      <Chatbot />
       <Features/>
     </div>
     <div>
