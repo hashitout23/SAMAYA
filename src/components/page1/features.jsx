@@ -6,12 +6,12 @@ const Features = () => {
     <div>
         <div>
             <div className='border-r-8'>
-            <h1 className='font-bold text-2xl mx-40 my-10 absolute '>Emergency Contact </h1>
-            <h1 className='font-bold text-2xl mx-60 my-20 absolute text-purple-800'> Section</h1>
+            <h1 className='font-black text-2xl mx-40 my-10 absolute '>Emergency Contact </h1>
+            <h1 className='font-black text-2xl mx-60 my-20 absolute text-purple-800'> Section</h1>
             </div>
         </div>
 
-        <div className='wrapper my-12 ml-2 mr-2 pl-96 pr-60 drop-shadow-2xl'>
+        <div className='wrapper my-12 ml-10 mr-2 pl-96 pr-60 drop-shadow-2xl'>
         <Slider
             width="250px"
             duration={40}
@@ -37,3 +37,4 @@ const Features = () => {
 }              
                      
 export default Features
+

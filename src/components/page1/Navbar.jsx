@@ -10,10 +10,8 @@ const ProfileDropDown = (props) => {
     const navigation = [
         { title: "Dashboard", path: "javascript:void(0)" },
         { title: "Settings", path: "javascript:void(0)" },
-        { title: "Log out", path: "javascript:void(0)" },
     ]
 
-    
     useEffect(() => {
         const handleDropDown = (e) => {
             if (!profileRef.current.contains(e.target)) setState(false)
@@ -22,7 +20,8 @@ const ProfileDropDown = (props) => {
     }, [])
 
     return (
-        <div className={`relative ${props.class}`}>
+        <div className={`relative ${props.class} z-50`}>
+         
             <div className="flex items-center space-x-4">
                 <button ref={profileRef} className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-purple-800"
                     onClick={() => setState(!state)}
@@ -112,6 +111,8 @@ export default () => {
                                 className="w-full outline-none appearance-none placeholder-grey-600 text-gray-500 sm:w-auto"
                                 type="text"
                                 placeholder="Search"
+                                style={{outline: 'none', boxShadow: '0 0 0 2px #fff'}}
+                                
                             />
                         </form>
                         <ProfileDropDown 
