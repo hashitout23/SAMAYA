@@ -27,7 +27,8 @@ function App() {
     <div>
       <Chain/>
     </div>
-    <div><Foot/>
+    <div>
+      <Foot/>
     </div>
     <div>
       <Admin/>
