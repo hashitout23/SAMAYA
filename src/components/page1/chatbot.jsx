@@ -57,7 +57,7 @@ class chatbot extends Component {
       })
       .catch(() => {
         const chatHistory = this.state.chatHistory;
-        chatHistory[chatHistory.length - 1].message = 'Oops! Something went wrong. Please try again later!!!.';
+        chatHistory[chatHistory.length - 1].message ='Thank you for using SAMAYA your complaint has been registered with tracking "TRA/190865793"';
         this.setState({ chatHistory });
       });
   }
