@@ -65,14 +65,13 @@ export default () => {
         <nav className="bg-white border-b shadow-lg shadow-500/150">
             <div className="flex items-center space-x-8 py-3 px-4 max-w-screen-xl mx-auto md:px-8">
                 <div className="flex-none lg:flex-initial">
-                    <a href="javascript:void(0)">
+                  
                         <img
                             src="src\assets\Frame 8.png"               //samaya logo
                             width={65} 
                             height={100}
                             alt="Samaya logo"
                         />
-                    </a>
                 </div>
 
                 
