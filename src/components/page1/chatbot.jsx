@@ -14,15 +14,16 @@ class chatbot extends Component {
       chatHistory: [],
       chatInputHeight: 'auto',
       showChatbot: false,
-    };
-    this.API_KEY = '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';
-    this.API_URL = 'https://api.openai.com/v1/chat/completions';
+     };
+    // this.API_KEY = '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';
+    this.API_URL = 'http://localhost:8000/api';
     this.chatInputRef = React.createRef();
   }
 
   handleChat = () => {
     const userMessage = this.state.userMessage.trim();
     if (!userMessage) return;
+    this.props.onUserMessage(userMessage); 
     this.setState({
       userMessage: '',
       chatHistory: [...this.state.chatHistory, { message: userMessage, type: 'outgoing' }],
@@ -133,3 +134,6 @@ class chatbot extends Component {
 }
 
 export default withAuth0(chatbot);
+
+
+// {"message": userMessage}
