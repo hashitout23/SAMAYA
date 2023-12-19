@@ -3,14 +3,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 // Profile Dropdown
 const ProfileDropDown = (props) => {
-    const { loginWithRedirect } = useAuth0();
-    const { logout } = useAuth0();
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [state, setState] = useState(false)
     const profileRef = useRef()
 
     const navigation = [
         { title: "Dashboard", path: "javascript:void(0)" },
+        { title: "Settings", path: "javascript:void(0)" },
     ]
 
     useEffect(() => {
@@ -44,14 +43,15 @@ const ProfileDropDown = (props) => {
                         </li>
                     ))
                 }
-                {isAuthenticated ?(<button className="block text-purple-800 lg:hover:bg-gray-50 lg:p-2.5" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}> Log Out</button>)
-                            :(<button className=" block text-purple-800 lg:hover:bg-gray-50 lg:p-3" onClick={() => loginWithRedirect()}> Log In</button>)}
             </ul>
         </div>
     )
 }
 
 export default () => {
+    const { loginWithRedirect } = useAuth0();
+    const { logout } = useAuth0();
+    const { user, isAuthenticated, isLoading } = useAuth0();
     const [menuState, setMenuState] = useState(false)
 
   // Replace javascript:void(0) path with your path
@@ -65,14 +65,13 @@ export default () => {
         <nav className="bg-white border-b shadow-lg shadow-500/150">
             <div className="flex items-center space-x-8 py-3 px-4 max-w-screen-xl mx-auto md:px-8">
                 <div className="flex-none lg:flex-initial">
-                    <a href="javascript:void(0)">
+                  
                         <img
-                            src="src\assets\Frame 8.png"             
+                            src="src\assets\Frame 8.png"               //samaya logo
                             width={65} 
                             height={100}
                             alt="Samaya logo"
                         />
-                    </a>
                 </div>
 
                 
@@ -92,6 +91,8 @@ export default () => {
                                     </li>
                                 ))
                             }
+                            {isAuthenticated ?(<button className=" text-gray-500 font-black border-4 rounded-lg p-1  border-purple-700 text-xs" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}> Log Out</button>)
+                            :(<button className="  text-gray-500 font-black border-4 rounded-lg p-1  border-purple-700 text-xs" onClick={() => loginWithRedirect()}>Log In</button>)}
                             
                             
                         </ul>
