@@ -3,6 +3,8 @@ import './chatbot.css';
 import { GoCommentDiscussion } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
 import { IoSend } from "react-icons/io5";
+import { withAuth0} from "@auth0/auth0-react";
+
 
 class chatbot extends Component {
   constructor(props) {
@@ -72,7 +74,12 @@ class chatbot extends Component {
   }
 
   toggleChatbot = () => {
-    this.setState(prevState => ({ showChatbot: !prevState.showChatbot }));
+    const { isAuthenticated, loginWithRedirect } = this.props.auth0;
+    if(!isAuthenticated){
+      loginWithRedirect();
+    }
+    else{
+    this.setState(prevState => ({ showChatbot: !prevState.showChatbot }))};
   }
 
   componentDidUpdate() {
@@ -125,4 +132,4 @@ class chatbot extends Component {
   }
 }
 
-export default chatbot;
+export default withAuth0(chatbot);
