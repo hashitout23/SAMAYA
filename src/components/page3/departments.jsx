@@ -2,10 +2,10 @@ import React from 'react'
 import'./departments.css'
 const departments = () => {
   return (
-    <div className='department'>
+    <div className='department  pt-[40px] pb-[30px]'>
         <h1>List of Departments</h1>
         <div className='departments_1'>
-            <button><img src="src\assets\DefenceIcon.png" alt="" />defence</button>
+            <button><img src="src\assets\DefenceIcon.png" alt="" />Defence</button>
             <button><img src="src\assets\EducationIcon.png" alt="" />Education</button>
             <button><img src="src\assets\Finance.png" alt="" />Finance</button>
             <button><img src="src\assets\Gov_sector.png" alt="" />Gov sector</button>

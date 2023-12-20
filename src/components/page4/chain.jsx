@@ -7,7 +7,7 @@ const chain = () => {
   return (
     <div>
       <div className='works1'>
-        <div className='works'>
+        <div className='works flex justify-center '>
             <h1>
                 THIS IS HOW <span>SAMAYA</span> WORKS
             </h1>
@@ -21,18 +21,8 @@ const chain = () => {
             <div className='arrow3'><FaArrowRight /></div>
             <div className='circle4'><img src="src\assets\tu.png" alt="" /></div>
         </div>
-        <div className='footer'>
-            <div className='right'>
-            <button>
-            <div className='button'>
-                <div className='search'><FaSearch /></div>
-                search
-            </div>
-            </button>
-            </div>
         </div>
       </div>
-    </div>
   )
 }
 
