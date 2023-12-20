@@ -20,6 +20,11 @@ class chatbot extends Component {
     this.chatInputRef = React.createRef();
   }
 
+  handleUserMessageChange = (message) => {
+    // Call the callback function provided by the parent
+    this.props.onUserMessage(message);
+  };
+  
   handleChat = () => {
     const userMessage = this.state.userMessage.trim();
     if (!userMessage) return;
@@ -41,7 +46,7 @@ class chatbot extends Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.API_KEY}`,
+        //'Authorization': `Bearer ${this.API_KEY}`,
       },
       body: JSON.stringify({
         model: 'gpt-3.5-turbo',
@@ -50,18 +55,20 @@ class chatbot extends Component {
     };
 
     fetch(this.API_URL, requestOptions)
-      .then(res => res.json())
-      .then(data => {
-        const chatHistory = this.state.chatHistory;
-        chatHistory[chatHistory.length - 1].message = data.choices[0].message.content.trim();
-        this.setState({ chatHistory });
-      })
-      .catch(() => {
-        const chatHistory = this.state.chatHistory;
-        chatHistory[chatHistory.length - 1].message ='Thank you for using SAMAYA your complaint has been registered with tracking "TRA/190865793"';
-        this.setState({ chatHistory });
-      });
-  }
+    .then(res => res.json())
+    .then(data => {
+      const chatHistory = this.state.chatHistory;
+      chatHistory[chatHistory.length - 1].message = data.choices[0].message.content.trim();
+      this.setState({ chatHistory });
+    })
+    .catch(() => {
+      const chatHistory = this.state.chatHistory;
+      const trackingId = this.props.tmp && this.props.tmp.length > 0 ? this.props.tmp[this.props.tmp.length - 1]._id : 'N/A';
+      const errorMessage = `Thank you for using SAMAYA. Your complaint has been registered. Tracking ID: ${trackingId}`;
+      chatHistory[chatHistory.length - 1].message = errorMessage;
+      this.setState({ chatHistory });
+    });
+}
 
   handleInputChange = (e) => {
     this.setState({ userMessage: e.target.value });
@@ -121,7 +128,10 @@ class chatbot extends Component {
                 spellCheck="true"
                 required
                 value={this.state.userMessage}
-                onChange={this.handleInputChange}
+                onChange ={(e) => {
+                  this.handleInputChange(e);
+                  this.handleUserMessageChange(e.target.value); // Call the callback
+                }}
                 onKeyDown={this.handleKeyDown}
               />
               <span id="send-btn" className="material-symbols-rounded" onClick={this.handleChat}><IoSend/></span>

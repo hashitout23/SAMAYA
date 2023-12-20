@@ -4,6 +4,8 @@ from pymongo import MongoClient
 from transformers import pipeline
 import uuid
 from datetime import datetime
+import langid
+import Translator
 
 password = "mohit18"
 database_name = "samaya"
@@ -21,11 +23,21 @@ classifier = pipeline("zero-shot-classification")
 def generate_complaint_uid():
   return str(uuid.uuid4())
 
+def detect_language(text):
+    lang, _ = langid.classify(text)
+    return lang
+def translate_to_english(text, source_lang):
+    translator = Translator(to_lang='en', from_lang=source_lang)
+    translation = translator.translate(text)
+    return translation
 def predict_department(complaint: str):
+   text_to_translate = complaint
+   detected_language = detect_language(text_to_translate)
+   translated_text = translate_to_english(text_to_translate, detected_language)
    department_names = list(existing_record.keys())
    department_names = department_names[1:]
    result = classifier (
-       complaint,
+       translated_text,
        candidate_labels=department_names,
        multi_class=True,
        temperature = 0.8
@@ -45,15 +57,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-all_entries_cursor = complaints_data.find({})
-all_entries_list = list(all_entries_cursor)
+def data():
+    all_entries_cursor = complaints_data.find({})
+    all_entries_list = list(all_entries_cursor)
+    return all_entries_list
 
 @app.get("/api")
 def read_root():
-    return all_entries_list
+    # print(data())
+    return data()
 
 @app.post("/api")
 def create_item(data: dict):
+    print(data)
     complaint = data['msg']
     predicted_department = predict_department(complaint)
     dept_email = existing_record[predicted_department]
@@ -85,8 +101,8 @@ def create_item(data: dict):
         "department_email" : dept_email,
         "Date Time" : formatted_datetime
     }
-    
+    # print("*********************",data)
     entry = complaints_data.insert_one(record)
-
-    return {"message":"we recieved", "user data":entry}
+    print(data)
+    return {"message":"we recieved", "user data":data}
 
