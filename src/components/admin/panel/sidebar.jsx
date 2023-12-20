@@ -5,7 +5,7 @@ const Sidebar = () => {
     return (
         <div className='bg-[#523EC4] px-[25px] h-screen'>
             <div className='px-[15px] py-[20px] flex items-center justify-center border-b-[1px] border-[#EDEDED]/[0.3]'>
-                <h1 className='text-white text-[20px] leading-[24px] font-extrabold cursor-pointer flex text-center'>Admin Panel</h1>
+                <h1 className='text-white text-[20px] leading-[24px] font-extrabold cursor-pointer flex text-center'>Admin Panel water</h1>
             </div>
             <div className='flex items-center gap-[15px] py-[20px] border-b-[1px] border-[#EDEDED]/[0.3] cursor-pointer px-[6px]'>
                 <FaTachometerAlt color='white' />
