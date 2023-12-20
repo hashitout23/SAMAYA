@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-# import time
-import pymongo
+from pymongo import MongoClient
 from transformers import pipeline
 import uuid
 from datetime import datetime
@@ -17,8 +16,24 @@ department_name_emails = SamayaDB.dept_name_emails
 complaints_data = SamayaDB.user_complaints_data
 existing_record = department_name_emails.find_one({})
 
+classifier = pipeline("zero-shot-classification")
+
 def generate_complaint_uid():
   return str(uuid.uuid4())
+
+def predict_department(complaint: str):
+   department_names = list(existing_record.keys())
+   department_names = department_names[1:]
+   result = classifier (
+       complaint,
+       candidate_labels=department_names,
+       multi_class=True,
+       temperature = 0.8
+   )
+   print("-------------",result)
+
+   return result['labels'][0]
+
 
 app = FastAPI()
 
@@ -39,20 +54,8 @@ def read_root():
 
 @app.post("/api")
 def create_item(data: dict):
-
-    classifier = pipeline("zero-shot-classification")
     complaint = data['msg']
-    labels = list(existing_records.key())
-    labels = labels[1:]
-    
-    result = classifier (
-        complaint,
-        candidate_labels=labels,
-        multi_class=True,
-        temperature = 0.8
-    )
-            
-    predicted_department = result['labels'][0]
+    predicted_department = predict_department(complaint)
     dept_email = existing_record[predicted_department]
     
     code_for_departments = {
@@ -73,6 +76,7 @@ def create_item(data: dict):
 
     random_id = generate_complaint_uid()
     id_code = dept_code + '/' + random_id[3:23]
+    formatted_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     
     record = {
         '_id' : id_code,
@@ -84,32 +88,5 @@ def create_item(data: dict):
     
     entry = complaints_data.insert_one(record)
 
-    final = entry
-    return final
-
-
-# while True:
-    #     new_entries_cursor = complaints_data.find({'processed': {'$exists': False}})
-
-    #     for entry in new_entries_cursor:
-    #         complaint_text = entry["complaint"]
-    #         labels = list(existing_records.keys())
-    #         labels = labels[1:]
-
-    #         result = classifier(
-    #             complaint_text,
-    #             candidate_labels=labels,
-    #             multi_class=True,
-    #             temperature = 0.8
-    #         )
-            
-    #         predicted_department = result['labels'][0]
-    #         dept_email = existing_record[predicted_department]
-
-    #         complaints_data.update_one(
-    #             {'_id': entry['_id']},
-    #             {'$set': {'processed': True, 'predicted_department': result['labels'][0], 'predicted_email': dept_email}}
-    #         )
-
-    #     time.sleep(60)
+    return {"message":"we recieved", "user data":entry}
 
